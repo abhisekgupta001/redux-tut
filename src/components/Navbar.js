@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Navbar = () => {
-  const items = useSelector((state) => state.cart); //subscribe under the hood to which state, here state means entire state and cart is one state inside
+  const wishlistItems = useSelector((state) => state.wishlist);
+  const cartItems = useSelector((state) => state.cart); //subscribe under the hood to which state, here state means entire state and cart is one state inside
 
   return (
     <div
@@ -21,10 +22,12 @@ const Navbar = () => {
         <Link className="navLink" to="/">
           Home
         </Link>
-        <Link className="navLink" to="/cart">
-          Cart
+        <Link className="navLink" to="/wishlist">
+          Wishlist [{wishlistItems.length}]
         </Link>
-        <span className="cartCount">Cart Items: {items.length}</span>
+        <Link className="navLink" to="/cart">
+          Cart [{cartItems.length}]
+        </Link>
       </div>
     </div>
   );
